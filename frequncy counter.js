@@ -3,18 +3,9 @@
 // 적으로 뭐가 더있는지 모르겠음.
 
 function validAnagram(str1, str2) {
-    let result = "";
-    if (str1.length !== str2.length) {
-        result = false;
-        console.log(result);
-        return;
-    }
+    if (str1.length !== str2.length) return false;
     //Edge Case 맨처음에 글자 길이가 다르면 무조건 false 반환
-    if (str1.length === 0 && str2.length === 0) {
-        result = true;
-        console.log(result);
-        return;
-    }
+    if (str1.length === 0 && str2.length === 0) return true;
     //Edge Case 둘다 빈문자열일경우 length == 0 이고 이경우 무조건 true
     let checkLetter = {};
     let checkLetter1 = {};
@@ -31,12 +22,10 @@ function validAnagram(str1, str2) {
     for (let value in checkLetter) {
         // 서로 글자가 일치하는지 체크
         if (value in checkLetter1 === false) return false;
-        result = checkLetter[value] === checkLetter1[value] ? true : false;
+        // console.log(value in checkLetter1)
+        return checkLetter[value] === checkLetter1[value] ? true : false;
     }
-    console.log(result);
-    return;
 }
-
 validAnagram("", ""); // true
 validAnagram("aaz", "zza"); // false
 validAnagram("anagram", "nagaram"); // true
